@@ -32,14 +32,14 @@ def clean_campaign_data():
         return combined_df
 
     # Lista de archivos ZIP
-    zip_files = os.listdir(r"D:\Unal\Analitica Descriptiva\Labs\2024-2-LAB-05-limpieza-de-datos-de-campanas-de-marketing-DanielOrozco09\files\input")
+    zip_files = os.listdir("./files/input")
 
     # Lista para almacenar DataFrames de cada archivo ZIP
     all_dfs = []
 
     # Extraer archivos CSV de cada archivo ZIP y añadir a la lista
     for zip_file in zip_files:
-        df = extract_csv_from_zip(rf"D:\Unal\Analitica Descriptiva\Labs\2024-2-LAB-05-limpieza-de-datos-de-campanas-de-marketing-DanielOrozco09\files\input\{zip_file}")
+        df = extract_csv_from_zip(f"./files/input/{zip_file}")
         all_dfs.append(df)
 
     # Combinar todos los DataFrames en uno solo
@@ -50,7 +50,7 @@ def clean_campaign_data():
 
     df = df.rename(columns = {'mortgage' : 'mortage'})
     # Crear el directorio de salida si no existe
-    output_dir = r'D:\Unal\Analitica Descriptiva\Labs\2024-2-LAB-05-limpieza-de-datos-de-campanas-de-marketing-DanielOrozco09\files\output'
+    output_dir = "./files/output"
     os.makedirs(output_dir, exist_ok=True)
 
     # Procesar client.csv
